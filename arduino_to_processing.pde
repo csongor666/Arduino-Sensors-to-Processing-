@@ -3,7 +3,7 @@ import processing.serial.*;
 Serial mySerial;
 
 String myString=null; //variable to collect
-int nl =10; //ASCII code for carage return in serial
+int nl =10; //ASCII code for carriage return in serial
 float myVal; //fload for string converted ASCII serial data
 Table table; //call for table
 
