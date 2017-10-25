@@ -38,14 +38,15 @@ void draw () {
       //debug, what happend
       for (int sensorNum = 0; sensorNum < sensors.length; sensorNum++) {
   print("Sensor " + sensorNum + ": " + sensors[sensorNum] + "\t");
-      //put the values in the columns with indexing
+     }
+     //put the values in the columns with indexing
     TableRow newRow = table.addRow();
     newRow.setInt("id", table.lastRowIndex());
     newRow.setFloat("Time(millis)", sensors[0]);
     newRow.setFloat("Temp1", sensors[1]);
     newRow.setFloat("Temp2", sensors[2]);
     newRow.setFloat("HIndex", sensors[3]);
-}
+
 // add a linefeed at the end:
 println();
     }
