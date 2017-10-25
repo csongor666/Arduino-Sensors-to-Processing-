@@ -2,7 +2,7 @@
 
 #define DHTPIN 7     // what digital pin we're connected to
 
-// Uncomment whatever type you're using!
+
 #define DHTTYPE DHT11   // DHT 11
 
 DHT dht(DHTPIN, DHTTYPE);
@@ -38,14 +38,14 @@ void loop() {
   // Compute heat index in Celsius (isFahreheit = false)
   float hic = dht.computeHeatIndex(t, h, false);
   
-//Capture data
+//Capture data of Thermistor
   Vo = analogRead(ThermistorPin);
   R2 = R1 * (1023.0 / (float)Vo - 1.0);
   logR2 = log(R2);
   T = (1.0 / (c1 + c2 * logR2 + c3 * logR2 * logR2 * logR2));
   Tc = T - 273.15;
   Tf = (Tc * 9.0) / 5.0 + 32.0;
-
+//Print out the Time and Sensors value
 Serial.print(millis());
 Serial.print(",");
 Serial.print(Tc);
