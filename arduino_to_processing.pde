@@ -5,7 +5,7 @@ Serial mySerial;
 String myString=null; //variable to collect
 int nl =10; //ASCII code for carage return in serial
 float myVal; //fload for string converted ASCII serial data
-Table table;
+Table table; //call for table
 
 void setup() {
   
@@ -13,6 +13,7 @@ void setup() {
   //link processing to serial
   String myPort = Serial.list() [1];
   mySerial = new Serial(this, myPort, 9600);
+  //prepare the columns of table
   table = new Table();
   table.addColumn("id");
   table.addColumn("Time(millis)");
@@ -28,12 +29,16 @@ void draw () {
     if (myString != null) {
       background(0);
       myString = trim(myString);
-      float sensors[] = float(split(myString, ','));
+      //if we have one sensor value
      // myVal = float (myString); //takes data from serial and takes into number
       //println(myVal);
+      
+      //as we have three, need to be separated by the comma
+      float sensors[] = float(split(myString, ','));
+      //debug, what happend
       for (int sensorNum = 0; sensorNum < sensors.length; sensorNum++) {
   print("Sensor " + sensorNum + ": " + sensors[sensorNum] + "\t");
-  
+      //put the values in the columns with indexing
     TableRow newRow = table.addRow();
     newRow.setInt("id", table.lastRowIndex());
     newRow.setFloat("Time(millis)", sensors[0]);
@@ -45,6 +50,7 @@ void draw () {
 println();
     }
     }
+    //save table, name it as you want
      saveTable(table, "data/new.csv");
 
 
